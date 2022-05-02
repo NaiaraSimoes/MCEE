@@ -1,0 +1,1 @@
+def bisection(f, a, b):
