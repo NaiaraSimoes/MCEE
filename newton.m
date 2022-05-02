@@ -1,1 +1,0 @@
-def newton(f, x1):
