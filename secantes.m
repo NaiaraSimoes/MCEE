@@ -1,1 +1,0 @@
-def secantes(a,b);
