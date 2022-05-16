@@ -35,13 +35,15 @@ bisection(f,a,b,n,tol,e);
 m = '0';
 while m == '0'
     m = input('Aperte 1 para VOLTAR AO MENU: ','s');
-    if m ~= '1'
+    if m == '1'
+        break
+    end
     clc;
     fprintf('MÉTODO DAS BISECÇÕES: f(x) = %s\n', e);
     fprintf('Instante inicial: t1 = %ds\n', a);
     fprintf('Instante final: t2 = %ds\n', b);
     bisection(f,a,b,n,tol,e);
     m = '0';
-    end
+    
 end
 menu
