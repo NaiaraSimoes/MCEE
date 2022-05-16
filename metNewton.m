@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; close all;
 
 % introdução dos dados necessãrios para a realização do método
 
