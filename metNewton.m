@@ -37,9 +37,8 @@ while m ~= '1'
     m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
     if m ~= '1' 
         clc; j = 1;
-    else
-        menu
+    
     end
 end
-
+menu
 
