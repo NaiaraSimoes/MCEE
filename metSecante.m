@@ -42,7 +42,7 @@ plot(x, x*0, 'k-');
 
 
 % voltar ao menu
-if min(fx) <= tol && max(fx) > 0 %se o menor resultado for negativo e o maior
+if length(xx)<n || (min(fx) <= tol && max(fx) > 0) %se o menor resultado for negativo e o maior
                               %positivo, então há um valor nulo pra equação
     tabela(fx, xx);
     m = '0';
