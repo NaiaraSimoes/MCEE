@@ -49,11 +49,13 @@ if min(fx) < 0 && max(fx) > 0 %se o menor resultado for negativo e o maior
     while m == '0'
         animation(fx, xx); 
        
+        %volta ao menu
         m = input('Aperte 1 para VOLTAR AO MENU: ','s');
         if m ~= '1'
             clc;
             m = '0';
-        end        
+        end
+        
     end    
 else
     fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
