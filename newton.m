@@ -1,4 +1,4 @@
-function [v,fx,erro] = newton(f,x1, n,tol)
+function [v,fx] = newton(f,x1, n,tol)
 
 y = sym(f);
 fp = matlabFunction(diff(y));
@@ -6,10 +6,10 @@ fp = matlabFunction(diff(y));
 for k = 1:n
  
     if fp(x1) == 0
-        erro = 1; v = 0; fx = 0;
+        fprintf('Localizado minímo local.\n');
+        fx(k) = fp(x1);
         return
     end
-    erro = 0;
     x2 = x1 - f(x1)/fp(x1);
     if abs(x2 - x1) < tol        
         v(k) = x2;
