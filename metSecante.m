@@ -46,13 +46,20 @@ plot(x, x*0, 'k-');
 
 
 % voltar ao menu
-while m ~= '1'
-    clc;
-    fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
-    tabela(f, xx, length(xx));
-    for r = 1:3
-        animation(fx, xx);
+if min(fx) <= tol && max(fx) > 0 %se o menor resultado for negativo e o maior
+                              %positivo, então há um valor nulo pra equação
+    while m ~= '1'
+        clc;
+        fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
+        tabela(f, xx, length(xx));
+        for r = 1:3
+            animation(fx, xx);
+        end
+        m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
     end
-    m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
+else
+    fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
+    pause;
 end
+    
 menu
