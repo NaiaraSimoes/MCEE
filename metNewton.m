@@ -13,32 +13,29 @@ x1 = input('Insira a posição inicial: ');
 % define tolerancia
 [n,tol] = tolerancia();
 clc;
+
 fprintf('MÉTODO DE NEWTON-RAPHSON: f(x) = %s\n', e);
 fprintf('Posição inicial: %.2f\n', x1);
-fprintf('Número máximo de repetições: %d\n', n);
-fprintf('Distância mínima aceita: %.4f\n', tol);
-j = 1; m = '0';
 
-% voltar ao menu 
-while m ~= '1'
-    for r = 1:3
-        [xx, fx]=newton(f,x1, n, tol);
-        while j == 1
-            clc;
-            fprintf('MÉTODO DE NEWTON-RAPHSON: f(x) = %s\n', e);
-            fprintf('\n   Interação            x              f(x)');
-            fprintf('\n--------------------------------------------------\n')
-            for l = 1:length(xx)
-                fprintf(' %dº interação:     %.6f   %.6f \n',l,xx(l), f(xx(l)));
-            end
-            j = 0;
-        end
+% utiliza o metodo 
+[v, k] = newton(f,x1, n, tol,e);
+
+% imprime a tabela no ecrã
+tabela(f,v,k)
+
+% voltar ao menu
+m = '0';
+while m == '0'
+    m = input('Aperte 1 para VOLTAR AO MENU: ','s');
+    if m == '1'
+        break
     end
-    m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
-    if m ~= '1' 
-        clc; j = 1;
+
+    [k, c] = newton(f,x1, n, tol,e);
+    m = '0';
     
-    end
 end
 menu
+
+
 

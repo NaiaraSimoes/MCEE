@@ -1,4 +1,4 @@
-function [xx, fx] = newton(f,x1, n,tol)
+function [v,k] = newton(f,x1, n,tol,e)
 
 % definição do eixo x
 if x1 < 0
@@ -10,7 +10,7 @@ end
 % gráfico:
 t_pausa = 0.25;
 plot(x,f(x));grid on; hold on;
-title('f(x) = ');
+title('f(x) = ',e);
 xlabel('xx'); ylabel('yy');
 plot(x, x*0, 'k-');
 
@@ -38,11 +38,11 @@ for k = 1:n
     delete(p2); delete(p3); delete(d);
 
     if abs(x2 - x1) < tol        
-        xx(k) = x2; fx(k) = f(x2);
+        v(k) = x2;
         delete(p1);
         return
     else
-        xx(k) = x1; fx(k) = f(x1);
+        v(k) = x1; 
         x1 = x2;
     end
 end
