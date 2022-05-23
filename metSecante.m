@@ -30,10 +30,7 @@ end
 clc;
 fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
 fprintf('Posições iniciais: %.2f | %.2f\n', x1, x2);
-fprintf('Número máximo de repetições: %d\n', n);
-fprintf('Distância mínima aceita: %.4f\n', tol);
 
-m = '0';
 [xx, fx] = secante(f, x1, x2, n, tol);
 
 
@@ -48,18 +45,19 @@ plot(x, x*0, 'k-');
 % voltar ao menu
 if min(fx) <= tol && max(fx) > 0 %se o menor resultado for negativo e o maior
                               %positivo, então há um valor nulo pra equação
+    tabela(fx, xx);
+    m = '0';
     while m ~= '1'
-        clc;
-        fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
-        tabela(fx, xx);
-        for r = 1:3
-            animation(fx, xx);
-        end
-        m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
-    end
+        animation(fx, xx);
+        
+        m = input('Aperte 1 para VOLTAR AO MENU: ','s');
+        if m ~= '1'
+            clc;
+            m = '0';
+        end       
+    end    
 else
     fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
     pause;
-end
-    
+end   
 menu
