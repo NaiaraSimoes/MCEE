@@ -15,6 +15,9 @@ end
 loop = 1;
 while loop == 1
     x2 = input('Insira o segundo ponto de partida: \n');
+    if isempty(x2)
+    x1 = 0;
+    end
     if x2~=x1
         loop = 0;
     else
