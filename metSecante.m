@@ -39,7 +39,6 @@ m = '0';
 
 % gráfico:
 x = linspace(-max(abs(xx)), max(abs(xx)), 1000);
-t_pausa = 0.25;
 plot(x,f(x));grid on; hold on;
 title('f(x) = ');
 xlabel('xx'); ylabel('yy');
@@ -52,20 +51,7 @@ while m ~= '1'
     fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
     tabela(f, xx, length(xx));
     for r = 1:3
-        for count = 1:length(xx)
-            % animação:
-            if count<length(xx)
-                p1(count) = plot(xx(count), fx(count), 'mo', 'MarkerFaceColor', 'm', 'MarkerSize', 6); % ponto (x1,y1)
-                pause(t_pausa);
-                p2 = plot(xx(count), 0, 'mo', 'MarkerFaceColor', 'm', 'MarkerSize', 6); % ponto (x1,0)
-                pause(t_pausa);
-                p3 = plot ([xx(count), xx(count)],[fx(count),0], 'm:','LineWidth',1); % linha vertical
-                pause(t_pausa);
-                d = plot ([xx(count+1), xx(count)],[0,fx(count)], 'r--','LineWidth',1); % linha diagonal
-                pause(t_pausa);
-                delete(p2); delete(p3); delete(d);
-            end
-        end
+        animation(fx, xx);
     end
     m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
 end
