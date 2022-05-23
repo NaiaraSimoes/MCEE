@@ -9,6 +9,9 @@ clear; clc; close all;
 clc;
 fprintf('Método de Newton-Raphson: f(x) = %s\n', e);
 x1 = input('Insira a posição inicial: ');
+if isempty(x1)
+    x1 = 0;
+end
 
 % define tolerancia
 [n,tol] = tolerancia();

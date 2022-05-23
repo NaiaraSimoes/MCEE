@@ -9,13 +9,16 @@ fprintf('Método das Secantes: f(x) = %s\n', e);
 
 % Definir pontos de partida
 x1 = input('Insira o primeiro ponto de partida: \n');
+if isempty(x1)
+    x1 = 0;
+end
 loop = 1;
 while loop == 1
     x2 = input('Insira o segundo ponto de partida: \n');
     if x2~=x1
         loop = 0;
     else
-        fprint('O segundo ponto de partida deve ser diferente do primeiro.\n');
+        fprintf('O segundo ponto de partida deve ser diferente do primeiro.\n');
     end
 end
 
@@ -27,7 +30,7 @@ fprintf('Posições iniciais: %.2f | %.2f\n', x1, x2);
 fprintf('Número máximo de repetições: %d\n', n);
 fprintf('Distância mínima aceita: %.4f\n', tol);
 
-j = 1; m = '0';
+m = '0';
 [xx, fx] = secante(f, x1, x2, n, tol);
 
 
@@ -42,6 +45,9 @@ plot(x, x*0, 'k-');
 
 % voltar ao menu
 while m ~= '1'
+    clc;
+    fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
+    tabela(f, xx, length(xx));
     for r = 1:3
         for count = 1:length(xx)
             % animação:
@@ -57,21 +63,7 @@ while m ~= '1'
                 delete(p2); delete(p3); delete(d);
             end
         end
-        while j == 1
-            clc;
-            fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
-            fprintf('\n   Interação            x              f(x)');
-            fprintf('\n--------------------------------------------------\n')
-            for k = 1:length(xx)
-                fprintf(' %dº interação:     %.6f   %.6f \n',k,xx(k), fx(k));
-            end
-            j = 0;
-        end
     end
     m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
-    if m ~= '1'
-        clc; j = 1;
-        
-    end
 end
 menu

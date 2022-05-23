@@ -9,6 +9,9 @@ clc;
 % define o tempo
 fprintf('Método das bisecções: f(x) = %s\n', e);
 a = input('Insira o instante inicial: ');
+if isempty(a)
+    a = 0;
+end
 
 b = a;
 while b <= a
