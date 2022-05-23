@@ -31,15 +31,25 @@ fprintf('Instante inicial: t1 = %ds\n', a);
 fprintf('Instante final: t2 = %ds\n', b);
 
 % utiliza o metodo 
-[v, k, fx] = bisection(f,a,b,n,tol);
+[xx,fx] = bisection(f,a,b,n,tol);
 
-% animação e tabela:
-if min(fx) < 0 && max(fx) > 0 %se o menor resultado for negativo e o maior 
-                              %positivo, então há um valor nulo pra equação
-    animacao(f,x,v,e,k);
-    tabela(f,v,k);
-else
-    fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
-    pause;
+% gráfico:
+x = linspace(-max(abs(xx)), max(abs(xx)), 1000);
+plot(x,f(x));grid on; hold on;
+title('f(x) = ');
+xlabel('xx'); ylabel('yy');
+plot(x, x*0, 'k-');
+
+
+% voltar ao menu
+m = '0';
+while m ~= '1'
+    clc;
+    fprintf('Método das bisecções: f(x) = %s\n', e);
+    tabela(f, xx, length(xx));
+    for r = 1:3
+        animation(fx, xx);
+    end
+    m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
 end
 menu

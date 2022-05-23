@@ -1,4 +1,4 @@
-function [v, k, fx] = bisection(f,a,b,kmax,tol)
+function [v, fx] = bisection(f,a,b,kmax,tol)
 
 for k = 1:kmax
 

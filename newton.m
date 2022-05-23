@@ -1,4 +1,4 @@
-function [v,k,fx] = newton(f,x1, n,tol)
+function [v,fx] = newton(f,x1, n,tol)
 
 y = sym(f);
 fp = matlabFunction(diff(y));

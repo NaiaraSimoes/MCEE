@@ -8,9 +8,9 @@ clear; clc; close all;
 % define o ponto de partida
 clc;
 fprintf('Método de Newton-Raphson: f(x) = %s\n', e);
-x = input('Insira a posição inicial: ');
-if isempty(x)
-    x = 0;
+x1 = input('Insira a posição inicial: ');
+if isempty(x1)
+    x1 = 0;
 end
 
 % define tolerancia
@@ -19,20 +19,28 @@ clc;
 
 clc;
 fprintf('MÉTODO DE NEWTON-RAPHSON: f(x) = %s\n', e);
-fprintf('Posição inicial: %.2f\n', x);
+fprintf('Posição inicial: %.2f\n', x1);
 
 % utiliza o metodo 
-[v, k, fx] = newton(f,x, n, tol);
+[xx,fx] = newton(f,x1, n, tol);
 
-% animação e tabela:
-if min(fx) < 0 && max(fx) > 0 %se o menor resultado for negativo e o maior 
-                              %positivo, então há um valor nulo pra equação
-    animacao(f,x,v,e,k);
-    tabela(f,v,k);
-else
-    fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
-    pause;
+% gráfico:
+x = linspace(-max(abs(xx)), max(abs(xx)), 1000);
+plot(x,f(x));grid on; hold on;
+title('f(x) = ');
+xlabel('xx'); ylabel('yy');
+plot(x, x*0, 'k-');
+
+
+% voltar ao menu
+m = '0';
+while m ~= '1'
+    clc;
+    fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
+    tabela(f, xx, length(xx));
+    for r = 1:3
+        animation(fx, xx);
+    end
+    m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
 end
 menu
-
-
