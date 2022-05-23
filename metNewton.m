@@ -27,20 +27,27 @@ fprintf('Posição inicial: %.2f\n', x1);
 % gráfico:
 x = linspace(-max(abs(xx)), max(abs(xx)), 1000);
 plot(x,f(x));grid on; hold on;
-title('f(x) = ');
+title('f(x) = ',e);
 xlabel('xx'); ylabel('yy');
 plot(x, x*0, 'k-');
 
-
-% voltar ao menu
-m = '0';
-while m ~= '1'
-    clc;
-    fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
-    tabela(f, xx, length(xx));
-    for r = 1:3
-        animation(fx, xx);
-    end
-    m = input('PRIMA 1 PARA VOLTAR AO MENU: ', 's');
+% verificacao de solução 
+if min(fx) < 0 && max(fx) > 0 %se o menor resultado for negativo e o maior 
+                              %positivo, então há um valor nulo pra equação
+    m = '0';
+    while m == '0'
+        animation(fx, xx); 
+        tabela(fx,xx);
+       
+        m = input('Aperte 1 para VOLTAR AO MENU: ','s');
+        if m ~= '1'
+            clc;
+            m = '0';
+        end
+        
+    end    
+else
+    fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
+    pause;
 end
 menu

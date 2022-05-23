@@ -1,22 +1,22 @@
-function tabela(f,v,k)
+function tabela(fx,xx)
 clc;
 fprintf('\n   Interação     Valor Calculado  Distância da raiz ');
 fprintf('\n-----------------------------------------------------\n');
-for i = 1:k
-    % é utilizado if e else apenas para criar um padrão na tabela
+for i = 1:length(xx)
     
+    % é utilizado if e else apenas para criar um padrão na tabela    
     if i < 10
-        if f(v(i)) >= 0
-            fprintf(' %dº interação:       %.6f          %.6f\n', i, v(i),f(v(i)));
+        if fx(i) >= 0
+            fprintf(' %dº interação:       %.6f          %.6f\n', i, xx(i),fx(i));
         else
-            fprintf(' %dº interação:       %.6f         %.6f\n', i, v(i),f(v(i)));
+            fprintf(' %dº interação:       %.6f         %.6f\n', i, xx(i),fx(i));
         end
         
     else
-        if f(v(i)) >= 0
-            fprintf('%dº interação:       %.6f          %.6f\n', i, v(i),f(v(i)));
+        if fx(i) >= 0
+            fprintf('%dº interação:       %.6f          %.6f\n', i, xx(i),fx(i));
         else
-            fprintf('%dº interação:       %.6f         %.6f\n', i, v(i),f(v(i)));
+            fprintf('%dº interação:       %.6f         %.6f\n', i, xx(i),fx(i));
         end
 
     end
