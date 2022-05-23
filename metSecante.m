@@ -40,7 +40,7 @@ m = '0';
 % gráfico:
 x = linspace(-max(abs(xx)), max(abs(xx)), 1000);
 plot(x,f(x));grid on; hold on;
-title('f(x) = ');
+title('f(x) = ',e);
 xlabel('xx'); ylabel('yy');
 plot(x, x*0, 'k-');
 
@@ -51,7 +51,7 @@ if min(fx) <= tol && max(fx) > 0 %se o menor resultado for negativo e o maior
     while m ~= '1'
         clc;
         fprintf('MÉTODO DAS SECANTES: f(x) = %s\n', e);
-        tabela(f, xx, length(xx));
+        tabela(fx, xx);
         for r = 1:3
             animation(fx, xx);
         end
