@@ -8,37 +8,31 @@ clear; clc; close all;
 % define o ponto de partida
 clc;
 fprintf('Método de Newton-Raphson: f(x) = %s\n', e);
-x1 = input('Insira a posição inicial: ');
-if isempty(x1)
-    x1 = 0;
+x = input('Insira a posição inicial: ');
+if isempty(x)
+    x = 0;
 end
 
 % define tolerancia
-[n,tol] = tolerancia();
 clc;
+[n,tol] = tolerancia();
 
+clc;
 fprintf('MÉTODO DE NEWTON-RAPHSON: f(x) = %s\n', e);
-fprintf('Posição inicial: %.2f\n', x1);
+fprintf('Posição inicial: %.2f\n', x);
 
 % utiliza o metodo 
-[v, k] = newton(f,x1, n, tol,e);
+[v, k, fx] = newton(f,x, n, tol);
 
-% imprime a tabela no ecrã
-tabela(f,v,k)
-
-% voltar ao menu
-m = '0';
-while m == '0'
-    m = input('Aperte 1 para VOLTAR AO MENU: ','s');
-    if m == '1'
-        break
-    end
-
-    [k, c] = newton(f,x1, n, tol,e);
-    m = '0';
-    
+% animação e tabela:
+if min(fx) < 0 && max(fx) > 0 %se o menor resultado for negativo e o maior 
+                              %positivo, então há um valor nulo pra equação
+    animacao(f,x,v,e,k);
+    tabela(f,v,k);
+else
+    fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
+    pause;
 end
 menu
-
 
 
