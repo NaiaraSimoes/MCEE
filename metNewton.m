@@ -32,15 +32,19 @@ xlabel('xx'); ylabel('yy');
 plot(x, x*0, 'k-');
 
 % verificacao de solução 
-if length(xx)<n ||(min(fx) < 0 && max(fx) > 0) %se o menor resultado for negativo e o maior 
+if length(xx)<n || (min(fx) <= tol && max(fx) > 0) %se o menor resultado for negativo e o maior 
                               %positivo, então há um valor nulo pra equação
-    tabela(fx,xx);
+
     m = '0';
     while m == '0'
-        animation(fx, xx); 
+        tabela(fx,xx);
+        animation(fx, xx,f); 
        
+        %volta ao menu
         m = input('Aperte 1 para VOLTAR AO MENU: ','s');
-        if m ~= '1'
+        if m == '1'
+            break;
+        else
             clc;
             m = '0';
         end

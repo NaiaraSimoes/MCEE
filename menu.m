@@ -13,7 +13,7 @@ switch n
     case '2'
         metNewton;
     case '3'
-        metSecantes;
+        metSecante;
     case 's'
         clear; clc;
     case 'S'

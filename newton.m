@@ -6,8 +6,9 @@ fp = matlabFunction(diff(y));
 for k = 1:n
  
     if fp(x1) == 0
-        fprintf('Localizado minímo local.\n');
+        fprintf('Localizado minímo/máximo local.\n');
         fx(k) = fp(x1);
+        v(k) = x1;
         return
     end
     x2 = x1 - f(x1)/fp(x1);

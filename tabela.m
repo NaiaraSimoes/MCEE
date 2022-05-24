@@ -1,5 +1,4 @@
 function tabela(fx,xx)
-clc;
 fprintf('\n   Interação     Valor Calculado  Distância da raiz ');
 fprintf('\n-----------------------------------------------------\n');
 for i = 1:length(xx)
