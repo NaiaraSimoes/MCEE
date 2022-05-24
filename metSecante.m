@@ -64,6 +64,5 @@ if length(xx)<n || (min(fx) <= tol && max(fx) > 0) %se o menor resultado for neg
 else
     fprintf('Equação sem solução.\nPressione qualquer tecla para voltar ao menu.\n');
     pause;
-    pause;
 end
 menu
