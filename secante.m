@@ -1,6 +1,6 @@
 function [r, y] = secante(f, x1, x2, N, tol)
 
-for n = 2:N
+for n = 2:(N+1)
        
     x3 = x2 - ((x2 - x1)/(f(x2)-f(x1)))*f(x2);    
     if abs(x3-x2)<tol
