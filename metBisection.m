@@ -42,7 +42,7 @@ plot(x, x*0, 'k-');
 
 
 % verificacao de solução
-if length(xx)<n || (min(fx) <= tol && max(fx) > 0)
+if fx(length(xx))== 0 || (min(fx) <= tol && max(fx) > 0)
     %se o menor sultado for negativo e o maior positivo, então há um valor nulo pra equação
 
     m = '0';
